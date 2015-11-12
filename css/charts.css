@@ -1,0 +1,95 @@
+body {
+	margin: 0;
+	background-color: black;
+	font-family: sans-serif; 
+	color: lightgray;
+}
+
+body a {
+	color: lightgray;
+}
+
+.charts-control {
+	padding: 0px 23px;
+}
+
+.large-chart-control {
+	position: fixed;
+	width: 100%;
+	top: 0px;
+	left: 10px;
+	height: 100%;
+	background-color: #000;
+}
+
+.loading {
+	visibility: hidden;
+}
+
+.charts {
+	padding-top: 55px;
+}
+
+.chart-container {
+	display: inline-block;
+}
+.chart-container.small {
+}
+.chart-container.large {
+	margin-top: 45px;
+}
+
+.chart-container.large .chart {
+	height: 90%;
+}
+
+.charts-control .charts-settings {
+	position: fixed;
+	left 10px;
+	background-color: rgba(0,0,0,0.7);
+}
+.large-chart-control .charts-settings {
+	position: absolute;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+
+.charts-settings label {
+	display: block;
+}
+
+.charts-settings .setting {
+	display: inline-block;
+}
+
+.inchart-settings {
+	width: 20px;
+	height: 20px;
+	position: absolute;
+	margin-top: 20px;
+	margin-left: 10px;
+}
+
+.inchart-setting {
+	cursor: pointer;
+}
+.inchart-settings .large-setting {
+	background-color: blue;
+}
+.inchart-settings .close-setting {
+	background-color: red;
+}
+
+
+/* Generics */
+
+.block {
+	display: block;
+}
+.inline-block {
+	display: inline-block;
+}
+
+.nodisp {
+	display: none;
+}

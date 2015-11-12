@@ -1,0 +1,98 @@
+<html>
+<head>
+	<title>Market indices</title>
+</head>
+<body>
+
+	<!-- ko-templates -->
+	<div class="nodisp" >
+		<div id="chart" >
+			<div class="chart-container" 
+					data-bind="css: {
+						loading: isLoading, 
+						small: size() === 'small', 
+						large: size() === 'large'}" >
+
+				<div >
+					<a href="#" data-bind="click: openExternalChart">
+						<span data-bind="text: name" ></span>
+					</a>
+				</div>
+				<div class="inchart-settings">
+					<button class="inchart-setting large-setting" data-bind="click: $root.boundOnLargeChartClick, visible: size() !== 'large'">L</button>
+					<button class="inchart-setting close-setting" data-bind="click: $root.boundOnCloseChartClick, visible: size() === 'large'">X</button>
+				</div>
+				<img class="chart" data-bind="attr: { src: link }, 
+					click: onChartClicked" >
+				</img>
+			</div>
+		</div>
+
+		<div id="charts-settings" >
+			<div class="charts-settings" >
+				<div class="setting">
+					<label for="chartprovider">Provider</label>
+					<select id="chartprovider" data-bind="options: chartProviders,
+						optionsText: 'name',
+						value: chartProvider,
+						event: { change: onChartSpecChanged }"></select>
+				</div>
+				<div class="setting">
+					<select data-bind="options: scales,
+						value: scale,
+						event: { change: onChartSpecChanged }"></select>
+				</div>
+
+				<div class="setting">
+					<select data-bind="options: timePeriods,
+						value: timePeriod,
+						event: { change: onChartSpecChanged  }"></select>
+				</div>
+
+				<div class="setting">
+					<button data-bind="click: onChartSpecChanged">Update</button>
+				</div>
+			</div>
+		</div>
+
+		<div id="charts-control" >	
+			<div class="charts-control" >
+				<div data-bind="template: { name: 'charts-settings', data: chartSettings }" ></div>
+				<div class="charts" data-bind="template: { name: 'chart', foreach: charts }" ></div>
+			</div>
+		</div>
+
+		<div id="large-chart-control" >	
+			<div class="large-chart-control" >
+				<div data-bind="template: { name: 'charts-settings', data: chartSettings }" ></div>
+				<div class="largeChart" data-bind="template: { name: 'chart', data: chartVM }" ></div>
+			</div>
+		</div>
+	</div>
+	<!-- ko-templates -->
+
+	<div class="mini-charts-control" >
+
+		<div data-bind="template: {name: 'charts-control', data: chartsControl }"></div>
+		<div data-bind="template: {name: 'large-chart-control', data: largeChartControl, if: largeChartControl }"></div>
+
+	</div>
+
+	<link type="text/css" rel="stylesheet" href="css/charts.css"></link>
+	<script type="text/javascript" src="lib/underscore.js" ></script>
+	<script type="text/javascript" src="lib/knockout.js" ></script>
+	<script type="text/javascript" src="js/utils.js" ></script>
+	<script type="text/javascript" src="js/object-utils.js" ></script>
+	<script type="text/javascript" src="js/Class.js" ></script>
+	<script type="text/javascript" src="js/ChartVM.js" ></script>
+	<script type="text/javascript" src="js/ChartSettingsVM.js" ></script>
+	<script type="text/javascript" src="js/ChartsVM.js" ></script>
+	<script type="text/javascript" src="js/LargeChartControlVM.js" ></script>
+	<script type="text/javascript" src="js/chartProviders.js" ></script>
+	<script type="text/javascript" src="js/minicharts.js" ></script>
+	<script type="text/javascript" >
+		new Minicharts(document.getElementsByClassName('mini-charts-control')[0]);
+	</script>
+
+</body>
+</html>
