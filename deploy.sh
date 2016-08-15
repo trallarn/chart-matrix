@@ -4,4 +4,4 @@
 
 ./build-dist.sh
 
-scp -r dist/* pi:/var/www/chart-matrix/
+scp -r dist/* pi:/var/www/finance/
