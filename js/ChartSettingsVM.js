@@ -1,7 +1,7 @@
 ChartSettingsVM = Class.extend({
 
 	timePeriods: ['1d','5d','10d','1m','2m','3m','6m','1y','2y','5y','max'],
-	defaultTimePeriod: '2m',
+	defaultTimePeriod: '6m',
 
 	scales: [ 'Log', 'Lin' ],
 	chartType: 'candle',
