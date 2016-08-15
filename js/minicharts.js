@@ -9,6 +9,8 @@ Minicharts = Class.extend({
 		this.boundOnLargeChartClick = this.onLargeChartClick.bind(this);
 		this.boundOnCloseChartClick = this.onCloseChart.bind(this);
 
+        document.onkeyup = this.onEscapeKey.bind(this);
+
 		ko.applyBindings(this, container);
 
 	},
@@ -18,9 +20,15 @@ Minicharts = Class.extend({
 	},
 
 	onCloseChart: function(chartVM) {
-		if (chartVM.size() === 'large') {
+        if(this.largeChartControl()) {
 			this.largeChartControl(false);
-		}
-	}
+        }
+    },
+
+    onEscapeKey: function(e) {
+        if(e.keyCode === 27) {
+            this.onCloseChart();
+        }
+    }
 
 });
