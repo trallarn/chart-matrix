@@ -8,13 +8,13 @@ LargeChartControlVM = Class.extend({
 			onChange: this.onChartSettingsChanged.bind(this)
 		});
 
-		var link = chartVM.chartSettings.buildChartLink(chartVM.getSymbol(), this.size);
-		this.chartVM = new ChartVM(link, chartVM.getSymbol(), this.size, this.chartSettings);
+		var link = chartVM.chartSettings.buildChartLink(chartVM.indexDO, this.size);
+		this.chartVM = new ChartVM(link, chartVM.indexDO, this.size, this.chartSettings);
 
 	},
 
 	onChartSettingsChanged: function() {
-		var link = this.chartVM.chartSettings.buildChartLink(this.chartVM.getSymbol(), this.size);
+		var link = this.chartVM.chartSettings.buildChartLink(this.chartVM.indexDO, this.size);
 		this.chartVM.link(link);
 	}
 

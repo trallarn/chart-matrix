@@ -14,6 +14,7 @@ ChartProvider.BigCharts = ChartProvider.extend({
 	},
 
 	indices: [
+        {symbol:'SE:OMXSPI',name:'OMXSPI', compareWith: ['DJIA','DX:DAX','UK:UKX','HK:HSI']},
 		'SE:OMXSPI',
 		'XX:OMXS30',
         'DJIA',
@@ -69,12 +70,17 @@ ChartProvider.BigCharts = ChartProvider.extend({
 
 	getChartUrl: function(settings) {
 
-		var linkTemplate = _.template('http://bigcharts.marketwatch.com/kaavio.Webhost/charts/big.chart?symb=<%= index %>&uf=0&type=<%= chartType %>&size=<%= size %>&style=350&freq=<%= timeFrequency %>&time=<%= timePeriod %>&ma=0&maval=200&lf=5&lf2=0&lf3=0&mocktick=1&random=<%= rand %>');
+		var linkTemplate = _.template('http://bigcharts.marketwatch.com/kaavio.Webhost/charts/big.chart?symb=<%= index %>&uf=0&type=<%= chartType %>&size=<%= size %>&style=350&freq=<%= timeFrequency %>&time=<%= timePeriod %>&ma=0&maval=200&lf=5&lf2=0&lf3=0&mocktick=1&random=<%= rand %><%= comparisons %>');
 
 		var chartType = uo.defaultFirst(settings.chartType, this.chartTypeMap);
 
+        var comparisons = _.reduce(settings.index.compareWith, function(mem, symbol){
+            return mem + '&comp=' + symbol;
+        }, '');
+
 		return linkTemplate({
 			index: this.getSymbol(settings.index),
+            comparisons: comparisons,
 			timeFrequency: this.getFrequency(settings.timeParam), 
 			timePeriod: uo.defaultFirst(settings.timeParam, this.times),
 			chartType: chartType,
