@@ -16,10 +16,11 @@ ChartProvider.BigCharts = ChartProvider.extend({
 	indices: [
 		'SE:OMXSPI',
 		'XX:OMXS30',
+        'DJIA',
+		{symbol:'SPX',name:'S&P 500'},
+		{symbol:'COMP',name:'Nasdaq'},
 		'USDSEK',
         {symbol: 'UK:BRENT CRUDE', name:'Brent oil'},
-		{symbol:'COMP',name:'Nasdaq'},
-		{symbol:'SPX',name:'S&P 500'},
 		'DX:DAX',
 		{symbol: 'FR:PX1',name:'France'},
 		{symbol: 'UK:UKX',name:'FTSE 100'},
